@@ -15,10 +15,13 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-# API FROM RAPID API
+# Prerequisites
 
-- https://www.themoviedb.org/
-- install package bloc
+- API FROM https://www.themoviedb.org/
+- install package flutter bloc
 - install package equatable
-- install package http
+- install package dio
+- install package carousel slider
+- install package cached network image
+- install package salomon bottom bar
 - install extension bloc for vs code
