@@ -1,4 +1,4 @@
-# movies_apps_mvvm
+# movies_apps_BloC_pattern
 
 A new Flutter project.
 
@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 # API FROM RAPID API
 
-- https://rapidapi.com/SAdrian/api/moviesdatabase
+- https://www.themoviedb.org/
 - install package bloc
 - install package equatable
 - install package http
