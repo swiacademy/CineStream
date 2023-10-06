@@ -43,7 +43,7 @@ class _BottomBarNavigationComponentState
                 ? Colors.white
                 : const Color(0XFF4D2DB7)),
           ),
-          title: const Text("Likes"),
+          title: const Text("Favorites"),
           selectedColor: (Theme.of(context).brightness == Brightness.dark
               ? Colors.white
               : const Color(0XFF4D2DB7)),
@@ -52,12 +52,12 @@ class _BottomBarNavigationComponentState
         /// Search
         SalomonBottomBarItem(
           icon: Icon(
-            Icons.search,
+            Icons.tv,
             color: (Theme.of(context).brightness == Brightness.dark
                 ? Colors.white
                 : const Color(0XFF4D2DB7)),
           ),
-          title: const Text("Search"),
+          title: const Text("Watchlist"),
           selectedColor: (Theme.of(context).brightness == Brightness.dark
               ? Colors.white
               : const Color(0XFF4D2DB7)),

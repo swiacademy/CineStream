@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Label extends StatelessWidget {
+class TitleMovie extends StatelessWidget {
   final String? text;
-  const Label({super.key, this.text});
+  const TitleMovie({super.key, this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +10,9 @@ class Label extends StatelessWidget {
       text!,
       style: Theme.of(context)
           .textTheme
-          .titleMedium!
+          .titleLarge!
           .copyWith(fontWeight: FontWeight.bold),
+      textAlign: TextAlign.justify,
     );
   }
 }

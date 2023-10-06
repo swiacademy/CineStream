@@ -7,6 +7,9 @@ class Constans {
   static const String API_TOKEN =
       "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzZmMjZkMTNiOTNhNGI3NjVjZTBhMmZhYTFmMTYxOCIsInN1YiI6IjY1MGVlYmU1ZTFmYWVkMDBhZTJmNzlkYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XrmJAM9guU_AdERpJPPMw8ZlxwpNJ0joLfT0RK8570c";
 
+  // ignore: constant_identifier_names
+  static const String YOUTUBE_BASE_URL = "https://www.youtube.com/watch?v=";
+
   // ================================================CONST IMAGE BACKDROP TMDB================================================
   // ignore: constant_identifier_names
   static const API_BASE_IMAGE_URL_BACKDROP_ORIGINAL =
@@ -45,6 +48,16 @@ class Constans {
       "https://image.tmdb.org/t/p/w780";
 // ================================================END IMAGE POSTER TMDB====================================================
 
+  // ignore: constant_identifier_names
+  static const API_BASE_URL_PROFILE_W45 = "https://image.tmdb.org/t/p/w45";
+  // ignore: constant_identifier_names
+  static const API_BASE_URL_PROFILE_W185 = "https://image.tmdb.org/t/p/w185";
+  // ignore: constant_identifier_names
+  static const API_BASE_URL_PROFILE_W632 = "https://image.tmdb.org/t/p/h632";
+  // ignore: constant_identifier_names
+  static const API_BASE_URL_PROFILE_ORIGINAL =
+      "https://image.tmdb.org/t/p/original";
+
   // CONST APP
   // ignore: constant_identifier_names
   static const USER_NAME = "John Doe";
@@ -66,4 +79,6 @@ class Constans {
   static const LABEL_POPULAR = "Popular";
   // ignore: constant_identifier_names
   static const LABEL_UPCOMING = "Upcoming Movies";
+  // ignore: constant_identifier_names
+  static const LABEL_TRAILER = "Watch Trailer";
 }

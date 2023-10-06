@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:movies_apps_mvvm/blocs/now_playing_movies/now_playing_movies_bloc.dart';
 import 'package:movies_apps_mvvm/blocs/popular_movies/popular_movies_bloc.dart';
 import 'package:movies_apps_mvvm/repositories/now_playing_movies/now_playing_movies_impl.dart';
@@ -11,6 +13,8 @@ import 'package:movies_apps_mvvm/ui/components/card_popular_movies.dart';
 import 'package:movies_apps_mvvm/ui/components/header.dart';
 import 'package:movies_apps_mvvm/ui/components/label.dart';
 import 'package:movies_apps_mvvm/ui/components/slider_ui.dart';
+import 'package:movies_apps_mvvm/ui/pages/detail_movie.dart';
+import 'package:movies_apps_mvvm/ui/pages/trailer_movie.dart';
 import 'package:movies_apps_mvvm/utils/constants.dart';
 import 'blocs/upcoming_movies/upcoming_movies_bloc.dart';
 
@@ -23,8 +27,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      getPages: [
+        //Simple GetPage
+        GetPage(name: '/detail-single-movie', page: () => const DetailMovie()),
+        GetPage(name: '/trailer-movie', page: () => const TrailerMovie()),
+        // GetPage with custom transitions and bindings
+      ],
       title: Constans.APP_NAME,
       theme: ThemeData(
         // colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey),
@@ -52,6 +62,21 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
