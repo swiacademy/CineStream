@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:movies_apps_mvvm/ui/components/video_player.dart';
+import 'package:movies_apps_bloc_pattern/ui/components/video_player.dart';
 
 class TrailerMovie extends StatefulWidget {
   const TrailerMovie({super.key});

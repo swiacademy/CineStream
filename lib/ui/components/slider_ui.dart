@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movies_apps_mvvm/models/upcoming_movies_model.dart';
+import 'package:movies_apps_bloc_pattern/models/upcoming_movies_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:movies_apps_mvvm/utils/constants.dart';
+import 'package:movies_apps_bloc_pattern/utils/constants.dart';
 
 class SliderUI extends StatelessWidget {
   final int itemCount;
@@ -42,9 +42,9 @@ class SliderUI extends StatelessWidget {
                       placeholderFadeInDuration: const Duration(seconds: 6),
                       placeholder: (context, url) =>
                           const Center(child: CircularProgressIndicator()),
-                      imageUrl: (upcomingMovies![itemIndex].backdropPath == null
-                          ? "https://m.media-amazon.com/images/M/MV5BODc4ODI1ZTgtMTZmNi00OWVkLTllMTktNTdjNDJjNDc5ZjNlXkEyXkFqcGdeQXVyNTIwMjM4OTU@._V1_.jpg"
-                          : "${Constans.API_BASE_IMAGE_URL_BACKDROP_W1280}${upcomingMovies![itemIndex].backdropPath}"),
+                      imageUrl: (upcomingMovies![itemIndex].backdropPath != null
+                          ? "${Constans.API_BASE_IMAGE_URL_BACKDROP_W1280}${upcomingMovies![itemIndex].backdropPath}"
+                          : Constans.IMAGE_NULL_PLACEHOLDER),
                       errorWidget: (context, url, error) =>
                           const Icon(Icons.error),
                     ),

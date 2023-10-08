@@ -6,7 +6,8 @@ class Constans {
   // ignore: constant_identifier_names
   static const String API_TOKEN =
       "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzZmMjZkMTNiOTNhNGI3NjVjZTBhMmZhYTFmMTYxOCIsInN1YiI6IjY1MGVlYmU1ZTFmYWVkMDBhZTJmNzlkYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XrmJAM9guU_AdERpJPPMw8ZlxwpNJ0joLfT0RK8570c";
-
+  // ignore: constant_identifier_names
+  static const String ACCOUNT_ID = "20482490";
   // ignore: constant_identifier_names
   static const String YOUTUBE_BASE_URL = "https://www.youtube.com/watch?v=";
 
@@ -66,6 +67,10 @@ class Constans {
       "https://xsgames.co/randomusers/assets/avatars/male/3.jpg";
 
   // ignore: constant_identifier_names
+  static const IMAGE_NULL_PLACEHOLDER =
+      "https://placehold.co/1028/png?text=Cine+Stream&font=Montserrat";
+
+  // ignore: constant_identifier_names
   static const SELECTED_BOTTOM_BAR_COLOR = "0XFF3FC1C9";
   // ignore: constant_identifier_names
   static const APP_NAME = "CineStream";
@@ -81,4 +86,17 @@ class Constans {
   static const LABEL_UPCOMING = "Upcoming Movies";
   // ignore: constant_identifier_names
   static const LABEL_TRAILER = "Watch Trailer";
+
+  // ignore: constant_identifier_names
+  static const LABEL_LOGIN_ACCOUNT = "Login Account";
+  // ignore: constant_identifier_names
+  static const LABEL_LOGIN_USERNAME = "Username";
+  // ignore: constant_identifier_names
+  static const LABEL_LOGIN_PASSWORD = "Password";
+  // ignore: constant_identifier_names
+  static const LABEL_LOGIN_SIGN_IN = "Sign In";
+  // ignore: constant_identifier_names
+  static const LABEL_LOGIN_OR = "OR";
+  // ignore: constant_identifier_names
+  static const LABEL_LOGIN_BROWSE_MOVIE = "Browse Movie";
 }

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_apps_mvvm/ui/components/label.dart';
-import 'package:movies_apps_mvvm/utils/constants.dart';
+import 'package:movies_apps_bloc_pattern/ui/components/label.dart';
+import 'package:movies_apps_bloc_pattern/utils/constants.dart';
 
 class CastMovies extends StatelessWidget {
   final String? profilePath;
@@ -28,9 +28,11 @@ class CastMovies extends StatelessWidget {
                   placeholderFadeInDuration: const Duration(seconds: 6),
                   placeholder: (context, url) =>
                       const Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.cover,
-                  imageUrl:
-                      "${Constans.API_BASE_URL_PROFILE_W185}$profilePath"),
+                  imageUrl: (profilePath != null
+                      ? "${Constans.API_BASE_URL_PROFILE_W185}$profilePath"
+                      : Constans.IMAGE_NULL_PLACEHOLDER)),
             ),
           ),
         ),

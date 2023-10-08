@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies_apps_mvvm/models/upcoming_movies_model.dart';
-import 'package:movies_apps_mvvm/repositories/upcoming_movies/upcoming_movies_repository.dart';
-import 'package:movies_apps_mvvm/utils/constants.dart';
+import 'package:movies_apps_bloc_pattern/models/upcoming_movies_model.dart';
+import 'package:movies_apps_bloc_pattern/repositories/upcoming_movies/upcoming_movies_repository.dart';
+import 'package:movies_apps_bloc_pattern/utils/constants.dart';
 import 'package:dio/dio.dart';
 
 import '../../utils/dio_headers.dart';

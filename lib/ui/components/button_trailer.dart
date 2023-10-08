@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movies_apps_mvvm/models/detail_movies_model.dart';
+import 'package:movies_apps_bloc_pattern/models/detail_movies_model.dart';
 
-class Button extends StatelessWidget {
+class ButtonTrailer extends StatelessWidget {
   final String label;
   final String title;
   final DetailMoviesModel detailMoviesModel;
-  const Button(
+  const ButtonTrailer(
       {super.key,
       required this.label,
       required this.detailMoviesModel,

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:movies_apps_mvvm/models/detail_movies_model.dart';
-import 'package:movies_apps_mvvm/repositories/detail_movies/detail_movies_repository.dart';
-import 'package:movies_apps_mvvm/utils/constants.dart';
+import 'package:movies_apps_bloc_pattern/models/detail_movies_model.dart';
+import 'package:movies_apps_bloc_pattern/repositories/detail_movies/detail_movies_repository.dart';
+import 'package:movies_apps_bloc_pattern/utils/constants.dart';
 
 class DetailMoviesImpl implements DetailMoviesRepository {
   @override

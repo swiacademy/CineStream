@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_apps_mvvm/models/popular_movies_model.dart';
-import 'package:movies_apps_mvvm/repositories/popular_movies/popular_movies_impl.dart';
+import 'package:movies_apps_bloc_pattern/models/popular_movies_model.dart';
+import 'package:movies_apps_bloc_pattern/repositories/popular_movies/popular_movies_impl.dart';
 
 part 'popular_movies_event.dart';
 part 'popular_movies_state.dart';

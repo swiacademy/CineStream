@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:movies_apps_mvvm/blocs/detail_movies/detail_movies_bloc.dart';
-import 'package:movies_apps_mvvm/repositories/detail_movies/detail_movies_impl.dart';
-import 'package:movies_apps_mvvm/ui/components/button.dart';
-import 'package:movies_apps_mvvm/ui/components/cast_movies.dart';
-import 'package:movies_apps_mvvm/ui/components/label.dart';
-import 'package:movies_apps_mvvm/ui/components/title_movie.dart';
-import 'package:movies_apps_mvvm/utils/constants.dart';
+import 'package:movies_apps_bloc_pattern/blocs/detail_movies/detail_movies_bloc.dart';
+import 'package:movies_apps_bloc_pattern/repositories/detail_movies/detail_movies_impl.dart';
+import 'package:movies_apps_bloc_pattern/ui/components/button_trailer.dart';
+import 'package:movies_apps_bloc_pattern/ui/components/cast_movies.dart';
+import 'package:movies_apps_bloc_pattern/ui/components/label.dart';
+import 'package:movies_apps_bloc_pattern/ui/components/title_movie.dart';
+import 'package:movies_apps_bloc_pattern/utils/constants.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:movies_apps_mvvm/utils/runtime_duration.dart';
+import 'package:movies_apps_bloc_pattern/utils/runtime_duration.dart';
 
 import '../components/description_movie.dart';
 import 'dart:io' show Platform;
@@ -73,8 +73,10 @@ class _DetailMovieState extends State<DetailMovie> {
                           child: CachedNetworkImage(
                               placeholder: (context, url) => const Center(
                                   child: CircularProgressIndicator()),
-                              imageUrl:
-                                  "${Constans.API_BASE_IMAGE_URL_BACKDROP_W1280}${state.detailMoviesModel.backdropPath}"),
+                              imageUrl: (state.detailMoviesModel.backdropPath !=
+                                      null
+                                  ? "${Constans.API_BASE_IMAGE_URL_BACKDROP_W1280}${state.detailMoviesModel.backdropPath}"
+                                  : Constans.IMAGE_NULL_PLACEHOLDER)),
                         ),
                         Positioned(
                           bottom: (Platform.isAndroid ? 48 : 55),
@@ -90,8 +92,11 @@ class _DetailMovieState extends State<DetailMovie> {
                                           const Center(
                                               child:
                                                   CircularProgressIndicator()),
-                                      imageUrl:
-                                          "${Constans.API_BASE_IMAGE_URL_POSTER_W92}${state.detailMoviesModel.posterPath}"),
+                                      imageUrl: (state.detailMoviesModel
+                                                  .posterPath !=
+                                              null
+                                          ? "${Constans.API_BASE_IMAGE_URL_POSTER_W92}${state.detailMoviesModel.posterPath}"
+                                          : Constans.IMAGE_NULL_PLACEHOLDER)),
                                 ),
                               ),
                               Column(
@@ -173,8 +178,15 @@ class _DetailMovieState extends State<DetailMovie> {
                                                     const Center(
                                                         child:
                                                             CircularProgressIndicator()),
-                                                imageUrl:
-                                                    "${Constans.API_BASE_IMAGE_URL_POSTER_W92}${state.detailMoviesModel.productionCompanies?[0].logoPath}"),
+                                                imageUrl: (state
+                                                            .detailMoviesModel
+                                                            .productionCompanies?[
+                                                                0]
+                                                            .logoPath !=
+                                                        null
+                                                    ? "${Constans.API_BASE_IMAGE_URL_POSTER_W92}${state.detailMoviesModel.productionCompanies?[0].logoPath}"
+                                                    : Constans
+                                                        .IMAGE_NULL_PLACEHOLDER)),
                                           ),
                                           Padding(
                                             padding:
@@ -285,7 +297,7 @@ class _DetailMovieState extends State<DetailMovie> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
-                      child: Button(
+                      child: ButtonTrailer(
                           label: Constans.LABEL_TRAILER,
                           detailMoviesModel: state.detailMoviesModel,
                           title: arguments[0]['title']),

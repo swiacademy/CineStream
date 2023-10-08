@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movies_apps_mvvm/models/popular_movies_model.dart';
+import 'package:movies_apps_bloc_pattern/models/popular_movies_model.dart';
 
-import 'package:movies_apps_mvvm/utils/constants.dart';
+import 'package:movies_apps_bloc_pattern/utils/constants.dart';
 
 import '../../utils/limit_char.dart';
 
@@ -49,8 +49,12 @@ class CardPopularMovies extends StatelessWidget {
                                   const Duration(seconds: 6),
                               placeholder: (context, url) => const Center(
                                   child: CircularProgressIndicator()),
-                              imageUrl:
-                                  "${Constans.API_BASE_IMAGE_URL_POSTER_W154}${popularMovies?[index].posterPath}",
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                              imageUrl: (popularMovies?[index].posterPath !=
+                                      null
+                                  ? "${Constans.API_BASE_IMAGE_URL_POSTER_W154}${popularMovies?[index].posterPath}"
+                                  : Constans.IMAGE_NULL_PLACEHOLDER),
                               fit: BoxFit.cover),
                         ),
                         Padding(
@@ -60,7 +64,11 @@ class CardPopularMovies extends StatelessWidget {
                               text: TextSpan(
                                   text: LimitChar.limitCharacters(
                                       popularMovies![index].title.toString()),
-                                  style: const TextStyle(
+                                  style: TextStyle(
+                                      color: (Theme.of(context).brightness ==
+                                              Brightness.dark
+                                          ? Colors.white
+                                          : const Color(0XFF4D2DB7)),
                                       fontWeight: FontWeight.w700)),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 3,

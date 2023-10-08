@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:movies_apps_mvvm/models/popular_movies_model.dart';
-import 'package:movies_apps_mvvm/repositories/popular_movies/popular_movies_repository.dart';
+import 'package:movies_apps_bloc_pattern/models/popular_movies_model.dart';
+import 'package:movies_apps_bloc_pattern/repositories/popular_movies/popular_movies_repository.dart';
 
 import '../../utils/constants.dart';
 import '../../utils/dio_headers.dart';
