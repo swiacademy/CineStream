@@ -47,7 +47,7 @@ class Header extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       child: Text(
-                        Constans.LABEL_LOGIN_SIGN_IN,
+                        Constants.LABEL_LOGIN_SIGN_IN,
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
@@ -63,7 +63,6 @@ class Header extends StatelessWidget {
 
                 if (state is AuthMoviesAuthenticatedState) {
                   return SizedBox(
-                    width: 310,
                     child: BlocBuilder<DetailAccountBloc, DetailAccountState>(
                       builder: (context, state) {
                         if (state is DetailAccountLoadingState) {
@@ -88,6 +87,9 @@ class Header extends StatelessWidget {
                                           : Colors.black87),
                                       fontWeight: FontWeight.w700,
                                     ),
+                              ),
+                              const SizedBox(
+                                width: 40,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(right: 12),

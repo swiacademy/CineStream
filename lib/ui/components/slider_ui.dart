@@ -43,8 +43,8 @@ class SliderUI extends StatelessWidget {
                       placeholder: (context, url) =>
                           const Center(child: CircularProgressIndicator()),
                       imageUrl: (upcomingMovies![itemIndex].backdropPath != null
-                          ? "${Constans.API_BASE_IMAGE_URL_BACKDROP_W1280}${upcomingMovies![itemIndex].backdropPath}"
-                          : Constans.IMAGE_NULL_PLACEHOLDER),
+                          ? "${Constants.API_BASE_IMAGE_URL_BACKDROP_W1280}${upcomingMovies![itemIndex].backdropPath}"
+                          : Constants.IMAGE_NULL_PLACEHOLDER),
                       errorWidget: (context, url, error) =>
                           const Icon(Icons.error),
                     ),
@@ -58,7 +58,7 @@ class SliderUI extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          Constans.LABEL_UPCOMING,
+                          Constants.LABEL_UPCOMING,
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall!

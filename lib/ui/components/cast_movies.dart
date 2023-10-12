@@ -31,8 +31,8 @@ class CastMovies extends StatelessWidget {
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.cover,
                   imageUrl: (profilePath != null
-                      ? "${Constans.API_BASE_URL_PROFILE_W185}$profilePath"
-                      : Constans.IMAGE_NULL_PLACEHOLDER)),
+                      ? "${Constants.API_BASE_URL_PROFILE_W185}$profilePath"
+                      : Constants.IMAGE_NULL_PLACEHOLDER)),
             ),
           ),
         ),

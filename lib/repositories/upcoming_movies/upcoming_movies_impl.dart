@@ -11,7 +11,7 @@ class UpcomingMoviesImpl implements UpcomingMoviesRepository {
   Future<UpcomingMoviesModel> getUpcomingMovies(
       String language, int page) async {
     try {
-      var url = Uri.parse("${Constans.API_BASE_URL}/3/movie/upcoming");
+      var url = Uri.parse("${Constants.API_BASE_URL}/3/movie/upcoming");
 
       final dio = Dio();
       DioHeaders(dio, language, page);

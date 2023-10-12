@@ -10,7 +10,7 @@ class NowPlayingMoviesImpl implements NowPlayingMoviesRepository {
   Future<NowPlayingMoviesModel> getNowPlayingMovies(
       String language, int page) async {
     try {
-      var url = Uri.parse("${Constans.API_BASE_URL}/3/movie/now_playing");
+      var url = Uri.parse("${Constants.API_BASE_URL}/3/movie/now_playing");
 
       final dio = Dio();
       DioHeaders(dio, language, page);

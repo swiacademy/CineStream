@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/trailer-movie', page: () => const TrailerMovie()),
         // GetPage with custom transitions and bindings
       ],
-      title: Constans.APP_NAME,
+      title: Constants.APP_NAME,
       theme: ThemeData(
         // colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey),
         useMaterial3: true,

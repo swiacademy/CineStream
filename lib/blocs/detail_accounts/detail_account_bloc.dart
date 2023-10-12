@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_apps_bloc_pattern/models/detail_account_model.dart';
 import 'package:movies_apps_bloc_pattern/repositories/detail_accounts/detail_account_impl.dart';
 

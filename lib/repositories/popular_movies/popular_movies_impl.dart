@@ -10,7 +10,7 @@ class PopularMoviesImpl implements PopularMoviesRepository {
   @override
   Future<PopularMoviesModel> getPopularMovies(String language, int page) async {
     try {
-      var url = Uri.parse("${Constans.API_BASE_URL}/3/movie/popular");
+      var url = Uri.parse("${Constants.API_BASE_URL}/3/movie/popular");
 
       final dio = Dio();
       DioHeaders(dio, language, page);

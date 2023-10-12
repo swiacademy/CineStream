@@ -45,7 +45,7 @@ class _LoginMoviesPageState extends State<LoginMoviesPage> {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: 400,
+                  height: 360,
                   child: Stack(
                     children: [
                       Positioned(
@@ -62,7 +62,7 @@ class _LoginMoviesPageState extends State<LoginMoviesPage> {
                         width: MediaQuery.of(context).size.width * 0.8,
                         bottom: 30,
                         child: Text(
-                          Constans.APP_TAGLINE,
+                          Constants.APP_TAGLINE,
                           style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ),
@@ -71,7 +71,7 @@ class _LoginMoviesPageState extends State<LoginMoviesPage> {
                 ),
                 const Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Label(text: Constans.LABEL_LOGIN_ACCOUNT),
+                  child: Label(text: Constants.LABEL_LOGIN_ACCOUNT),
                 ),
                 FormBuilder(
                   key: formKey,
@@ -84,7 +84,7 @@ class _LoginMoviesPageState extends State<LoginMoviesPage> {
                           child: FormBuilderTextField(
                             decoration: const InputDecoration(
                                 border: InputBorder.none,
-                                labelText: Constans.LABEL_LOGIN_USERNAME),
+                                labelText: Constants.LABEL_LOGIN_USERNAME),
                             name: 'username',
                             controller: userNameController,
                             enableInteractiveSelection: true,
@@ -101,7 +101,7 @@ class _LoginMoviesPageState extends State<LoginMoviesPage> {
                           child: FormBuilderTextField(
                             decoration: const InputDecoration(
                                 border: InputBorder.none,
-                                labelText: Constans.LABEL_LOGIN_PASSWORD),
+                                labelText: Constants.LABEL_LOGIN_PASSWORD),
                             name: 'password',
                             controller: passwordController,
                             obscureText: true,
@@ -126,7 +126,7 @@ class _LoginMoviesPageState extends State<LoginMoviesPage> {
                                       passwordController.text));
                             },
                             child: Text(
-                              Constans.LABEL_LOGIN_SIGN_IN,
+                              Constants.LABEL_LOGIN_SIGN_IN,
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
@@ -139,7 +139,7 @@ class _LoginMoviesPageState extends State<LoginMoviesPage> {
                         height: 15,
                       ),
                       Text(
-                        Constans.LABEL_LOGIN_OR,
+                        Constants.LABEL_LOGIN_OR,
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!
@@ -164,7 +164,7 @@ class _LoginMoviesPageState extends State<LoginMoviesPage> {
                             BlocProvider.of<AuthMoviesBloc>(context)
                                 .add(SkipLoggedIn());
                           },
-                          child: Text(Constans.LABEL_LOGIN_BROWSE_MOVIE,
+                          child: Text(Constants.LABEL_LOGIN_BROWSE_MOVIE,
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!

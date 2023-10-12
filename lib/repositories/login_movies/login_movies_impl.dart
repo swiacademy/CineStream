@@ -30,10 +30,10 @@ class LoginMoviesImpl
       var vaidationToken =
           await validationToken(token.requestToken!, username, password);
       var url =
-          Uri.parse("${Constans.API_BASE_URL}/3/authentication/session/new");
+          Uri.parse("${Constants.API_BASE_URL}/3/authentication/session/new");
       final dio = Dio();
       dio.options.headers["accept"] = "application/json";
-      dio.options.queryParameters = {"api_key": Constans.API_KEY};
+      dio.options.queryParameters = {"api_key": Constants.API_KEY};
 
       final params = {
         "request_token": vaidationToken.requestToken,
@@ -62,11 +62,11 @@ class LoginMoviesImpl
       String requestToken, String username, String password) async {
     try {
       var url = Uri.parse(
-          "${Constans.API_BASE_URL}/3/authentication/token/validate_with_login");
+          "${Constants.API_BASE_URL}/3/authentication/token/validate_with_login");
 
       final dio = Dio();
       dio.options.headers["accept"] = "application/json";
-      dio.options.queryParameters = {"api_key": Constans.API_KEY};
+      dio.options.queryParameters = {"api_key": Constants.API_KEY};
 
       final params = {
         "request_token": requestToken,
@@ -132,10 +132,10 @@ class LoginMoviesImpl
   Future<RequestTokenModel> getRequestToken() async {
     try {
       var url =
-          Uri.parse("${Constans.API_BASE_URL}/3/authentication/token/new");
+          Uri.parse("${Constants.API_BASE_URL}/3/authentication/token/new");
 
       final dio = Dio();
-      dio.options.queryParameters = {"api_key": Constans.API_KEY};
+      dio.options.queryParameters = {"api_key": Constants.API_KEY};
 
       Response response = await dio.get(url.toString());
 
@@ -155,11 +155,11 @@ class LoginMoviesImpl
   Future<DetailAccountModel> getAccountDetail() async {
     try {
       var url = Uri.parse(
-          "${Constans.API_BASE_URL}/3/account/${Constans.ACCOUNT_ID}");
+          "${Constants.API_BASE_URL}/3/account/${Constants.ACCOUNT_ID}");
 
       final dio = Dio();
       dio.options.headers["accept"] = "application/json";
-      dio.options.headers["Authorization"] = "Bearer ${Constans.API_TOKEN}";
+      dio.options.headers["Authorization"] = "Bearer ${Constants.API_TOKEN}";
 
       Response response = await dio.get(url.toString());
 

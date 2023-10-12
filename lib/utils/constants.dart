@@ -1,4 +1,4 @@
-class Constans {
+class Constants {
   // ignore: constant_identifier_names
   static const String API_BASE_URL = "https://api.themoviedb.org";
   // ignore: constant_identifier_names
@@ -99,4 +99,8 @@ class Constans {
   static const LABEL_LOGIN_OR = "OR";
   // ignore: constant_identifier_names
   static const LABEL_LOGIN_BROWSE_MOVIE = "Browse Movie";
+  // ignore: constant_identifier_names
+  static const LABEL_LIKE = "Favorite";
+  // ignore: constant_identifier_names
+  static const LABEL_WATCHLIST = "Watchlist";
 }

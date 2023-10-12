@@ -65,7 +65,7 @@ class _HomeMoviesPageState extends State<HomeMoviesPage> {
                     }
                     if (state is MoviesErrorState) {
                       return const Center(
-                        child: Text(Constans.ERROR_FETCH_DATA),
+                        child: Text(Constants.ERROR_FETCH_DATA),
                       );
                     }
 
@@ -78,7 +78,7 @@ class _HomeMoviesPageState extends State<HomeMoviesPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Label(
-                        text: Constans.LABEL_NOW_PLAYING,
+                        text: Constants.LABEL_NOW_PLAYING,
                       ),
                       const SizedBox(
                         height: 5,
@@ -101,7 +101,7 @@ class _HomeMoviesPageState extends State<HomeMoviesPage> {
                           }
                           if (state is NowPlayingMoviesErrorState) {
                             return const Center(
-                              child: Text(Constans.ERROR_FETCH_DATA),
+                              child: Text(Constants.ERROR_FETCH_DATA),
                             );
                           }
 
@@ -120,7 +120,7 @@ class _HomeMoviesPageState extends State<HomeMoviesPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Label(
-                        text: Constans.LABEL_POPULAR,
+                        text: Constants.LABEL_POPULAR,
                       ),
                       const SizedBox(
                         height: 5,
@@ -142,7 +142,7 @@ class _HomeMoviesPageState extends State<HomeMoviesPage> {
                           }
                           if (state is PopularMoviesErrorState) {
                             return const Center(
-                              child: Text(Constans.ERROR_FETCH_DATA),
+                              child: Text(Constants.ERROR_FETCH_DATA),
                             );
                           }
 

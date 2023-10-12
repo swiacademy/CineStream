@@ -51,8 +51,8 @@ class CardNowPlayingMovies extends StatelessWidget {
                                   const Icon(Icons.error),
                               imageUrl: (nowPlayingMovies?[index].posterPath !=
                                       null
-                                  ? "${Constans.API_BASE_IMAGE_URL_POSTER_W154}${nowPlayingMovies?[index].posterPath}"
-                                  : Constans.IMAGE_NULL_PLACEHOLDER),
+                                  ? "${Constants.API_BASE_IMAGE_URL_POSTER_W154}${nowPlayingMovies?[index].posterPath}"
+                                  : Constants.IMAGE_NULL_PLACEHOLDER),
                               fit: BoxFit.fitWidth),
                         ),
                         Padding(
