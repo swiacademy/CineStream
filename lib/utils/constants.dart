@@ -100,7 +100,7 @@ class Constants {
   // ignore: constant_identifier_names
   static const LABEL_LOGIN_BROWSE_MOVIE = "Browse Movie";
   // ignore: constant_identifier_names
-  static const LABEL_LIKE = "Favorite";
+  static const LABEL_FAVORITE = "Favorite";
   // ignore: constant_identifier_names
   static const LABEL_WATCHLIST = "Watchlist";
 }

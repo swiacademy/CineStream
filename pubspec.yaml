@@ -48,6 +48,7 @@ dependencies:
   shared_preferences: ^2.2.1
   flutter_form_builder: ^9.1.1
   fluttertoast: ^8.2.2
+  very_good_infinite_list: ^0.7.1
 
 dev_dependencies:
   flutter_test:

@@ -61,9 +61,8 @@ class CardNowPlayingMovies extends StatelessWidget {
                             child: RichText(
                               text: TextSpan(
                                   text: LimitChar.limitCharacters(
-                                      nowPlayingMovies![index]
-                                          .title
-                                          .toString()),
+                                      nowPlayingMovies![index].title.toString(),
+                                      15),
                                   style: TextStyle(
                                       color: (Theme.of(context).brightness ==
                                               Brightness.dark

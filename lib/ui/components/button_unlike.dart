@@ -24,7 +24,7 @@ class _ButtonUnlikeState extends State<ButtonUnlike> {
             widget.mediaType, widget.mediaId, widget.isFavorite));
       },
       icon: const Icon(Icons.favorite),
-      tooltip: Constants.LABEL_LIKE,
+      tooltip: Constants.LABEL_FAVORITE,
     );
   }
 }

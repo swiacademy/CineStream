@@ -114,8 +114,11 @@ class _DetailMovieState extends State<DetailMovie> {
                     BlocBuilder<DetailMoviesBloc, DetailMoviesState>(
                       builder: (context, state) {
                         if (state is DetailMoviesLoadingState) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
+                          return const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
                           );
                         }
 
@@ -425,53 +428,3 @@ class _DetailMovieState extends State<DetailMovie> {
     );
   }
 }
-
-//  BlocListener<DetailMoviesBloc, DetailMoviesState>(
-//                             listener: (context, state) {
-//                               if (state is FaroviteAddedState) {
-//                                 Fluttertoast.showToast(
-//                                     msg: (state.addFavoriteModel.statusCode == 1
-//                                         ? "Movie has been added to favorite."
-//                                         : state.addFavoriteModel.statusMessage
-//                                             .toString()),
-//                                     toastLength: Toast.LENGTH_SHORT,
-//                                     gravity: ToastGravity.BOTTOM,
-//                                     timeInSecForIosWeb: 1,
-//                                     backgroundColor:
-//                                         (Theme.of(context).brightness ==
-//                                                 Brightness.dark
-//                                             ? Colors.white
-//                                             : Colors.black),
-//                                     textColor: (Theme.of(context).brightness ==
-//                                             Brightness.dark
-//                                         ? Colors.black
-//                                         : Colors.white),
-//                                     fontSize: 16.0);
-//                               }
-
-//                               if (state is FaroviteErrorState &&
-//                                   state is DetailMoviesLoadedState) {
-//                                 Fluttertoast.showToast(
-//                                     msg: state.error,
-//                                     toastLength: Toast.LENGTH_SHORT,
-//                                     gravity: ToastGravity.CENTER,
-//                                     timeInSecForIosWeb: 1,
-//                                     backgroundColor: Colors.red,
-//                                     textColor: Colors.white,
-//                                     fontSize: 16.0);
-//                               }
-//                             },
-                            // builder: (context, state) {
-                            //   if (state is FaroviteAddedState) {}
-                            //   return IconButton(
-                            //     enableFeedback: false,
-                            //     onPressed: () {
-                            //       BlocProvider.of<DetailMoviesBloc>(context)
-                            //           .add(AddFavoriteMovies(
-                            //               "movie", movieId, true));
-                            //     },
-                            //     icon: const Icon(Icons.favorite_border),
-                            //     tooltip: Constants.LABEL_LIKE,
-                            //   );
-                            // },
-                          // ),

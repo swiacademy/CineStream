@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:movies_apps_bloc_pattern/blocs/auth_movies/auth_movies_bloc.dart';
+import 'package:movies_apps_bloc_pattern/blocs/bottom_navigations/bottom_navigation_bloc.dart';
 import 'package:movies_apps_bloc_pattern/blocs/detail_accounts/detail_account_bloc.dart';
 import 'package:movies_apps_bloc_pattern/repositories/detail_accounts/detail_account_impl.dart';
 import 'package:movies_apps_bloc_pattern/repositories/login_movies/login_movies_impl.dart';
@@ -11,9 +12,12 @@ import 'package:movies_apps_bloc_pattern/repositories/popular_movies/popular_mov
 import 'package:movies_apps_bloc_pattern/repositories/upcoming_movies/upcoming_movies_impl.dart';
 import 'package:movies_apps_bloc_pattern/ui/components/bottom_bar_navigation.dart';
 import 'package:movies_apps_bloc_pattern/ui/pages/detail_movies_page.dart';
+import 'package:movies_apps_bloc_pattern/ui/pages/favorite_movies_page.dart';
 import 'package:movies_apps_bloc_pattern/ui/pages/home_movies_page.dart';
 import 'package:movies_apps_bloc_pattern/ui/pages/login_movies_page.dart';
+import 'package:movies_apps_bloc_pattern/ui/pages/profile_page.dart';
 import 'package:movies_apps_bloc_pattern/ui/pages/trailer_movies_page.dart';
+import 'package:movies_apps_bloc_pattern/ui/pages/watchlist_movies_page.dart';
 import 'package:movies_apps_bloc_pattern/utils/constants.dart';
 
 void main() {
@@ -90,7 +94,8 @@ class _MyHomePageState extends State<MyHomePage> {
         BlocProvider(
             create: (context) => DetailAccountBloc(
                   RepositoryProvider.of<DetailAccountImpl>(context),
-                )..add(GetDetailAccount()))
+                )..add(GetDetailAccount())),
+        BlocProvider(create: (context) => BottomNavigationBloc()),
       ],
       child: Expanded(
         child: BlocBuilder<AuthMoviesBloc, AuthMoviesState>(
@@ -100,10 +105,26 @@ class _MyHomePageState extends State<MyHomePage> {
             // }
 
             if (state is AuthMoviesAuthenticatedState) {
-              return const Scaffold(
+              const List<Widget> widgetScreen = <Widget>[
+                HomeMoviesPage(),
+                FavoriteMoviesPage(),
+                WatchlistMoviesPage(),
+                ProfilePage(),
+              ];
+
+              return Scaffold(
                 resizeToAvoidBottomInset: false,
-                bottomNavigationBar: BottomBarNavigationComponent(),
-                body: HomeMoviesPage(),
+                bottomNavigationBar: const BottomBarNavigationComponent(),
+                body: BlocConsumer<BottomNavigationBloc, BottomNavigationState>(
+                  listener: (context, state) {},
+                  builder: (context, state) {
+                    // return IndexedStack(
+                    //   index: state.tabIndex,
+                    //   children: widgetScreen,
+                    // );
+                    return widgetScreen.elementAt(state.tabIndex);
+                  },
+                ),
               );
             }
 

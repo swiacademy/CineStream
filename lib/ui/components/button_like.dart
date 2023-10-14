@@ -23,7 +23,7 @@ class _ButtonLikeState extends State<ButtonLike> {
             widget.mediaType, widget.mediaId, widget.isFavorite));
       },
       icon: const Icon(Icons.favorite_border),
-      tooltip: Constants.LABEL_LIKE,
+      tooltip: Constants.LABEL_FAVORITE,
     );
   }
 }

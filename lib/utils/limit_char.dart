@@ -1,9 +1,9 @@
 class LimitChar {
-  static String limitCharacters(String input) {
-    if (input.length <= 15) {
+  static String limitCharacters(String input, int length) {
+    if (input.length <= length) {
       return input;
     } else {
-      return "${input.substring(0, 15)}...";
+      return "${input.substring(0, length)}...";
     }
   }
 }

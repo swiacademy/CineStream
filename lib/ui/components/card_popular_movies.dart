@@ -63,7 +63,8 @@ class CardPopularMovies extends StatelessWidget {
                             child: RichText(
                               text: TextSpan(
                                   text: LimitChar.limitCharacters(
-                                      popularMovies![index].title.toString()),
+                                      popularMovies![index].title.toString(),
+                                      15),
                                   style: TextStyle(
                                       color: (Theme.of(context).brightness ==
                                               Brightness.dark
