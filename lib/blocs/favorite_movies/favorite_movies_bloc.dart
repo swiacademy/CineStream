@@ -13,6 +13,8 @@ class FavoriteMoviesBloc
   int perpage = 20;
   bool isFetching = false;
 
+  List<Results> favorites = [];
+
   FavoriteMoviesBloc(this.favoriteMoviesImpl)
       : super(const FavoriteMoviesLoadingState("Loading...")) {
     on<GetFavoriteMovies>((event, emit) async {
@@ -23,8 +25,8 @@ class FavoriteMoviesBloc
       try {
         final favoriteMovies =
             await favoriteMoviesImpl.getFavoriteMovies(event.languange, page);
-        emit(FavoriteMoviesLoadedState(favoriteMovies));
 
+        emit(FavoriteMoviesLoadedState(favoriteMovies));
         page++;
       } catch (e) {
         emit(FavoriteMoviesErrorState(e.toString()));

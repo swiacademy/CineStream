@@ -29,14 +29,19 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../components/description_movie.dart';
 import 'dart:io' show Platform;
 
-class DetailMovie extends StatefulWidget {
-  const DetailMovie({super.key});
+class DetailFavoritesWatchlistMovie extends StatefulWidget {
+  final int? movieId;
+  final String? title;
+  const DetailFavoritesWatchlistMovie(
+      {super.key, required this.movieId, required this.title});
 
   @override
-  State<DetailMovie> createState() => _DetailMovieState();
+  State<DetailFavoritesWatchlistMovie> createState() =>
+      _DetailFavoritesWatchlistMovieState();
 }
 
-class _DetailMovieState extends State<DetailMovie> {
+class _DetailFavoritesWatchlistMovieState
+    extends State<DetailFavoritesWatchlistMovie> {
   @override
   void initState() {
     super.initState();
@@ -53,10 +58,10 @@ class _DetailMovieState extends State<DetailMovie> {
 
   @override
   Widget build(BuildContext context) {
-    dynamic arguments = Get.arguments;
+    // dynamic arguments = Get.arguments;
 
-    final movieId = arguments[0]['movieId'];
-
+    // final movieId = arguments[0]['movieId'];
+    final movieId = widget.movieId;
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(create: (context) => DetailMoviesImpl()),
@@ -82,7 +87,7 @@ class _DetailMovieState extends State<DetailMovie> {
         ],
         child: Scaffold(
             appBar: AppBar(
-              title: Text(arguments[0]['title'].toString()),
+              title: Text(widget.title.toString()),
               leading: IconButton(
                   icon: const Icon(Icons.arrow_back, color: Colors.white),
                   onPressed: () {
@@ -458,7 +463,8 @@ class _DetailMovieState extends State<DetailMovie> {
                                             label: Constants.LABEL_TRAILER,
                                             detailMoviesModel:
                                                 state.detailMoviesModel,
-                                            title: arguments[0]['title']),
+                                            // title: arguments[0]['title']),
+                                            title: widget.title.toString()),
                                       ),
                                       BlocBuilder<AuthMoviesBloc,
                                           AuthMoviesState>(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_apps_bloc_pattern/blocs/bottom_navigations/bottom_navigation_bloc.dart';
-import 'package:movies_apps_bloc_pattern/ui/pages/home_movies_page.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class BottomBarNavigationComponent extends StatefulWidget {
@@ -24,8 +23,10 @@ class _BottomBarNavigationComponentState
               ? Colors.black54
               : Colors.white),
           currentIndex: state.tabIndex,
-          onTap: (i) => BlocProvider.of<BottomNavigationBloc>(context)
-              .add(TabChange(tabIndex: i)),
+          onTap: (i) {
+            BlocProvider.of<BottomNavigationBloc>(context)
+                .add(TabChange(tabIndex: i));
+          },
           items: [
             /// Home
             SalomonBottomBarItem(

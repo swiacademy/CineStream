@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:movies_apps_bloc_pattern/blocs/detail_movies/detail_movies_bloc.dart';
 import 'package:movies_apps_bloc_pattern/utils/constants.dart';
 

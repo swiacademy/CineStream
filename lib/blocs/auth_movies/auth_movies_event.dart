@@ -17,6 +17,14 @@ class LoggedIn extends AuthMoviesEvent {
   List<Object> get props => [username, password];
 }
 
+class ShowToast extends AuthMoviesEvent {
+  final String message;
+
+  const ShowToast(this.message);
+  @override
+  List<Object> get props => [message];
+}
+
 class SetSessionId extends AuthMoviesEvent {
   final String sessionId;
 
@@ -29,3 +37,5 @@ class SetSessionId extends AuthMoviesEvent {
 class SkipLoggedIn extends AuthMoviesEvent {}
 
 class GetIsLoggedIn extends AuthMoviesEvent {}
+
+class Signout extends AuthMoviesEvent {}

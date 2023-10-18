@@ -1,9 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_apps_bloc_pattern/blocs/watchlist_movies/watchlist_movies_bloc.dart';
 import 'package:movies_apps_bloc_pattern/models/now_playing_movies_model.dart';
 import 'package:movies_apps_bloc_pattern/utils/constants.dart';
 import 'package:movies_apps_bloc_pattern/utils/limit_char.dart';
 import 'package:get/get.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
+import '../pages/detail_movies_page.dart';
 
 class CardNowPlayingMovies extends StatelessWidget {
   final int itemCount;

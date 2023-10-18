@@ -96,6 +96,8 @@ class Constants {
   // ignore: constant_identifier_names
   static const LABEL_LOGIN_SIGN_IN = "Sign In";
   // ignore: constant_identifier_names
+  static const LABEL_LOGIN_SIGN_OUT = "Sign Out";
+  // ignore: constant_identifier_names
   static const LABEL_LOGIN_OR = "OR";
   // ignore: constant_identifier_names
   static const LABEL_LOGIN_BROWSE_MOVIE = "Browse Movie";

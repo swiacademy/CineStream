@@ -1,6 +1,5 @@
-import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_apps_bloc_pattern/models/watchlist_movies_model.dart';
 import 'package:movies_apps_bloc_pattern/repositories/watchlist_movies/watchlist_movies_impl.dart';
 
@@ -13,6 +12,8 @@ class WatchlistMoviesBloc
   int page = 1;
   int perpage = 20;
   bool isFetching = false;
+
+  List<Results> watchlist = [];
 
   WatchlistMoviesBloc(this.watchlistMoviesImpl)
       : super(const WatchlistMoviesLoadingState("Loading...")) {

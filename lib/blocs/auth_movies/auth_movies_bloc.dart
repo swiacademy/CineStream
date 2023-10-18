@@ -9,10 +9,9 @@ part 'auth_movies_state.dart';
 
 class AuthMoviesBloc extends Bloc<AuthMoviesEvent, AuthMoviesState> {
   final LoginMoviesImpl loginMoviesImpl;
-  AuthMoviesBloc(this.loginMoviesImpl) : super(const AuthMoviesLoadingState()) {
+  AuthMoviesBloc(this.loginMoviesImpl)
+      : super(const AuthMoviesLoadingState(false)) {
     on<GetIsLoggedIn>((event, emit) async {
-      emit(const AuthMoviesLoadingState());
-
       try {
         var loggedIn = await loginMoviesImpl.getIsLoggedIn();
         if (loggedIn) {
@@ -33,12 +32,35 @@ class AuthMoviesBloc extends Bloc<AuthMoviesEvent, AuthMoviesState> {
     });
 
     on<LoggedIn>((event, emit) async {
-      var login =
-          await loginMoviesImpl.createSession(event.username, event.password);
-      if (login.success!) {
-        emit(AuthMoviesAuthenticatedState());
-      } else {
+      if (event.username.isEmpty) {
+        emit(const AuthMoviesLoadingState(true));
+        emit(const AuthMoviesFailedState("username is required", false));
         emit(AuthMoviesUnauthenticatedState());
+      } else if (event.password.isEmpty) {
+        emit(const AuthMoviesLoadingState(true));
+        emit(const AuthMoviesFailedState("password is required", false));
+        emit(AuthMoviesUnauthenticatedState());
+      } else {
+        var login =
+            await loginMoviesImpl.createSession(event.username, event.password);
+        if (!login.success!) {
+          emit(const AuthMoviesLoadingState(true));
+          emit(const AuthMoviesFailedState(
+              "Session denied. Please try again", false));
+          emit(AuthMoviesUnauthenticatedState());
+        } else {
+          emit(AuthMoviesAuthenticatedState());
+        }
+      }
+    });
+
+    on<Signout>((event, emit) async {
+      emit(AuthSignoutLoadingState());
+      var signout = await loginMoviesImpl.getSignout();
+      if (signout.success!) {
+        emit(AuthSignoutSuccessState());
+      } else {
+        emit(const AuthSignoutErrorState("Error signout"));
       }
     });
   }

@@ -11,6 +11,7 @@ class FavoriteMoviesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider(
+      lazy: true,
       create: (context) => FavoriteMoviesImpl(),
       child: BlocProvider(
         create: (context) => FavoriteMoviesBloc(

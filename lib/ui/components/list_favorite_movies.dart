@@ -5,8 +5,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:movies_apps_bloc_pattern/blocs/favorite_movies/favorite_movies_bloc.dart';
 import 'package:movies_apps_bloc_pattern/models/favorite_movies_model.dart';
+import 'package:movies_apps_bloc_pattern/ui/pages/favorite_movies_page.dart';
 import 'package:movies_apps_bloc_pattern/utils/constants.dart';
 import 'package:movies_apps_bloc_pattern/utils/limit_char.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
+import '../pages/detail_favorites_watchlist_movies_page.dart';
 
 class ListFavoriteMovies extends StatefulWidget {
   const ListFavoriteMovies({super.key});
@@ -17,7 +21,7 @@ class ListFavoriteMovies extends StatefulWidget {
 
 class _ListFavoriteMoviesState extends State<ListFavoriteMovies> {
   final ScrollController scrollController = ScrollController();
-  final List<Results> favorites = [];
+  bool isRefresh = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,25 +29,32 @@ class _ListFavoriteMoviesState extends State<ListFavoriteMovies> {
       listener: (context, state) {
         if (state is FavoriteMoviesLoadingState) {
           const snackBar = SnackBar(
-            content: Text("Loading..."),
+            content: Row(
+              children: [
+                CircularProgressIndicator(
+                  color: Colors.grey,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text("Loading...")
+              ],
+            ),
           );
 
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         } else if (state is FavoriteMoviesLoadedState &&
             state.favoriteMoviesModel.results!.isEmpty &&
             state.favoriteMoviesModel.page != 1) {
-          Fluttertoast.showToast(
-              msg: "No more data...",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-              timeInSecForIosWeb: 1,
-              backgroundColor: (Theme.of(context).brightness == Brightness.dark
-                  ? Colors.white
-                  : Colors.black),
-              textColor: (Theme.of(context).brightness == Brightness.dark
-                  ? Colors.black
-                  : Colors.white),
-              fontSize: 16.0);
+          const snackBar = SnackBar(
+            backgroundColor: Colors.red,
+            duration: Duration(seconds: 1),
+            content: Text("No more favorite movies...",
+                style: TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          );
+
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         } else if (state is FavoriteMoviesErrorState) {
           Fluttertoast.showToast(
               msg: state.error,
@@ -57,7 +68,10 @@ class _ListFavoriteMoviesState extends State<ListFavoriteMovies> {
       },
       builder: (context, state) {
         if (state is FavoriteMoviesLoadedState) {
-          favorites.addAll(state.favoriteMoviesModel.results!.toList());
+          context
+              .read<FavoriteMoviesBloc>()
+              .favorites
+              .addAll(state.favoriteMoviesModel.results!.toList());
           context.read<FavoriteMoviesBloc>().isFetching = false;
 
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -78,6 +92,12 @@ class _ListFavoriteMoviesState extends State<ListFavoriteMovies> {
           );
         }
 
+        if (context.read<FavoriteMoviesBloc>().favorites.isEmpty) {
+          return const Center(
+            child: Text("No favorite movies"),
+          );
+        }
+
         return ListView.separated(
             controller: scrollController
               ..addListener(() {
@@ -93,10 +113,14 @@ class _ListFavoriteMoviesState extends State<ListFavoriteMovies> {
               return ListTile(
                 isThreeLine: true,
                 title: Text(
-                  favorites[index].title!,
+                  context.read<FavoriteMoviesBloc>().favorites[index].title!,
                 ),
-                subtitle: Text(
-                    LimitChar.limitCharacters(favorites[index].overview!, 100)),
+                subtitle: Text(LimitChar.limitCharacters(
+                    context
+                        .read<FavoriteMoviesBloc>()
+                        .favorites[index]
+                        .overview!,
+                    100)),
                 leading: Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: CachedNetworkImage(
@@ -105,27 +129,48 @@ class _ListFavoriteMoviesState extends State<ListFavoriteMovies> {
                         const Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
-                    imageUrl: (favorites[index].posterPath != null
-                        ? "${Constants.API_BASE_IMAGE_URL_POSTER_W154}${favorites[index].posterPath}"
+                    imageUrl: (context
+                                .read<FavoriteMoviesBloc>()
+                                .favorites[index]
+                                .posterPath !=
+                            null
+                        ? "${Constants.API_BASE_IMAGE_URL_POSTER_W154}${context.read<FavoriteMoviesBloc>().favorites[index].posterPath}"
                         : Constants.IMAGE_NULL_PLACEHOLDER),
                     fit: BoxFit.fitWidth,
                     width: 40,
                   ),
                 ),
-                onTap: () => {
-                  Get.toNamed("/detail-single-movie", arguments: [
-                    {
-                      "movieId": favorites[index].id,
-                      "title": favorites[index].title
-                    }
-                  ])
+                onTap: () async {
+                  isRefresh = await PersistentNavBarNavigator.pushNewScreen(
+                    context,
+                    screen: DetailFavoritesWatchlistMovie(
+                      movieId: context
+                          .read<FavoriteMoviesBloc>()
+                          .favorites[index]
+                          .id,
+                      title: context
+                          .read<FavoriteMoviesBloc>()
+                          .favorites[index]
+                          .title,
+                    ),
+                    withNavBar: true,
+                    pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                  );
+
+                  if (isRefresh) {
+                    // ignore: use_build_context_synchronously
+                    Navigator.pop(context);
+                    // ignore: use_build_context_synchronously
+                    PersistentNavBarNavigator.pushNewScreen(context,
+                        screen: const FavoriteMoviesPage(), withNavBar: true);
+                  }
                 },
               );
             },
             separatorBuilder: (context, index) => const Divider(
                   height: 1,
                 ),
-            itemCount: favorites.length);
+            itemCount: context.read<FavoriteMoviesBloc>().favorites.length);
       },
     );
   }

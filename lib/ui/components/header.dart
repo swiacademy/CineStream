@@ -112,7 +112,7 @@ class Header extends StatelessWidget {
                                           errorWidget: (context, url, error) =>
                                               const Icon(Icons.error),
                                           imageUrl:
-                                              "https://secure.gravatar.com/avatar/${state.detailAccountModel.avatar?.gravatar}.jpg?s=64"),
+                                              "https://secure.gravatar.com/avatar/${state.detailAccountModel.avatar?.gravatar!.hash}.jpg?s=128"),
                                     ),
                                   ),
                                 ),

@@ -11,7 +11,9 @@ final class DetailMoviesLoadingState extends DetailMoviesState {}
 
 final class DetailMoviesLoadedState extends DetailMoviesState {
   final AddFavoriteModel? addFavoriteModel;
+  final RemoveFavoriteModel? removeFavoriteModel;
   final AddWatchlistModel? addWatchlistModel;
+  final RemoveWatchlistModel? removeWatchlistModel;
   final DetailMoviesModel detailMoviesModel;
   final bool isFavoriteClicked;
   final bool isWatchlistClicked;
@@ -19,13 +21,15 @@ final class DetailMoviesLoadedState extends DetailMoviesState {
   final bool? isWacthlist;
 
   const DetailMoviesLoadedState(
-      this.detailMoviesModel,
-      this.addFavoriteModel,
-      this.addWatchlistModel,
-      this.isFavoriteClicked,
-      this.isWatchlistClicked,
-      this.isFavorite,
-      this.isWacthlist);
+      {required this.detailMoviesModel,
+      required this.addFavoriteModel,
+      required this.removeFavoriteModel,
+      required this.addWatchlistModel,
+      required this.removeWatchlistModel,
+      required this.isFavoriteClicked,
+      required this.isWatchlistClicked,
+      required this.isFavorite,
+      required this.isWacthlist});
 
   @override
   List<Object> get props => [detailMoviesModel, isFavoriteClicked];
