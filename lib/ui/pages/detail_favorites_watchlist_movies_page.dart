@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get.dart';
 import 'package:movies_apps_bloc_pattern/blocs/auth_movies/auth_movies_bloc.dart';
 import 'package:movies_apps_bloc_pattern/blocs/detail_movies/detail_movies_bloc.dart';
 import 'package:movies_apps_bloc_pattern/blocs/watchlist_movies/watchlist_movies_bloc.dart';
-import 'package:movies_apps_bloc_pattern/main.dart';
 import 'package:movies_apps_bloc_pattern/repositories/detail_movies/detail_movies_impl.dart';
 import 'package:movies_apps_bloc_pattern/repositories/login_movies/login_movies_impl.dart';
 import 'package:movies_apps_bloc_pattern/repositories/watchlist_movies/watchlist_movies_impl.dart';
-import 'package:movies_apps_bloc_pattern/ui/components/bottom_bar_navigation.dart';
 import 'package:movies_apps_bloc_pattern/ui/components/button_like.dart';
 import 'package:movies_apps_bloc_pattern/ui/components/button_trailer.dart';
 import 'package:movies_apps_bloc_pattern/ui/components/button_unlike.dart';
@@ -20,12 +17,9 @@ import 'package:movies_apps_bloc_pattern/ui/components/button_watchlist.dart';
 import 'package:movies_apps_bloc_pattern/ui/components/cast_movies.dart';
 import 'package:movies_apps_bloc_pattern/ui/components/label.dart';
 import 'package:movies_apps_bloc_pattern/ui/components/title_movie.dart';
-import 'package:movies_apps_bloc_pattern/ui/pages/watchlist_movies_page.dart';
 import 'package:movies_apps_bloc_pattern/utils/constants.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movies_apps_bloc_pattern/utils/runtime_duration.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-
 import '../components/description_movie.dart';
 import 'dart:io' show Platform;
 

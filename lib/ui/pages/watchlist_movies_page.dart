@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:movies_apps_bloc_pattern/repositories/watchlist_movies/watchlist_movies_impl.dart';
 import 'package:movies_apps_bloc_pattern/ui/components/list_watchlist_movies.dart';
 import 'package:movies_apps_bloc_pattern/utils/constants.dart';

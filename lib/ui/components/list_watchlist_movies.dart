@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get.dart';
 import 'package:movies_apps_bloc_pattern/ui/pages/watchlist_movies_page.dart';
 
 import 'package:movies_apps_bloc_pattern/utils/constants.dart';
@@ -11,7 +10,6 @@ import 'package:movies_apps_bloc_pattern/utils/limit_char.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../blocs/watchlist_movies/watchlist_movies_bloc.dart';
-import '../pages/detail_movies_page.dart';
 import '../pages/detail_favorites_watchlist_movies_page.dart';
 
 class ListWatchlistMovies extends StatefulWidget {
